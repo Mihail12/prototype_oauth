@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from social_django.utils import load_strategy
 
 from .models import Post
 
@@ -17,6 +18,9 @@ def index(request):
     # }
     response = render(request, 'blog/index.html')  # django.http.HttpResponse
     if request.user.is_authenticated:
+        social = request.user.social_auth.get(provider='google-oauth2')
+        access_token = social.get_access_token(load_strategy())
+        refresh_token = social.refresh_token(load_strategy())
         refresh = TokenObtainPairSerializer.get_token(request.user)
         response.set_cookie(key='access', value=str(refresh.access_token))
         response.set_cookie(key='refresh', value=str(refresh))

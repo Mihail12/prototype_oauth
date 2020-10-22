@@ -140,7 +140,7 @@ REST_FRAMEWORK = {
 
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1076459294286-ljbubgcnnujefn2kpbktq6iafkis936g.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'T4xoW4vx5geHgNbOhKAbD6mt'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'KdsW1-Zm633EtdUpAwpuIT3r'
 
 LOGIN_URL = '/auth/login/google-oauth2/'
 
@@ -154,3 +154,7 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {
+#     'access_type': 'offline'
+# }
